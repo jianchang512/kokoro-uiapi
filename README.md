@@ -1,7 +1,7 @@
 
 这是一个用于kokoro TTS项目的webui和api项目，支持中文、英文、日语、法语、意大利语、葡萄牙、西班牙、印地语共8种语言配音
 
-## webui
+## web界面
 
 ![](./static/pre.jpg)
 
@@ -12,7 +12,7 @@
 - 支持对齐字幕
 
 
-## API
+## 兼容 OpenAI API
 
 api兼容 OpenAI TTS
 
@@ -130,7 +130,7 @@ jm_kumo
 
 ### Windows 
 
-win10/11 可直接下载整合包，双击 `start.bat` 即可启动,若需GPU加速，请确保拥有NVIDIA显卡并安装CUDA12
+win10/11 可直接下载整合包(https://github.com/jianchang512/kokoro-uiapi/releases)，双击 `start.bat` 即可启动,若需GPU加速，请确保拥有NVIDIA显卡并安装CUDA12
 
 ### Linux/MacOS
 
