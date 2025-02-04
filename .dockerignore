@@ -1,0 +1,7 @@
+venv/
+data/
+temp
+models
+ffmpeg
+runtime
+logs

@@ -1,0 +1,17 @@
+kokoro
+numpy==1.26.4
+pydantic
+pydantic_core
+requests
+soundfile
+torch
+torchaudio
+transformers
+waitress
+flask
+pydub
+flask_cors
+pypinyin
+ordered_set
+jieba
+cn2an

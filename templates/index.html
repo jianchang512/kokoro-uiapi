@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>kokoroTTS UI API</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css?v=1">
+</head>
+
+<body>
+    <div class="container">
+
+                <!-- 语音合成区域 -->
+                <div id="synthesis-area" class="synthesis-area mt-4">
+                    <h5>为文字或SRT字幕创建配音 - Kokoro TTS</h5>
+                    <div class="synthesis-controls">
+                        <div>
+                            <label for="lang-select">语言:</label>
+                            <select id="lang-select">
+                                <option value="zh">中文</option>
+                                <option value="en">英语</option>
+                                <option value="ja">日语</option>
+                                <option value="fr">法语</option>
+                                <option value="es">西班牙语</option>
+                                <option value="pt">葡萄牙语</option>
+                                <option value="it">意大利语</option>
+                                <option value="hi">印地语</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="voice-select">角色:</label>
+                            <select id="voice-select">
+                                
+                            </select>
+                        </div>
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="试听该角色" role="tooltip"   class="cursor-pointer" id="start-listen-button">&#128266;</span>
+                        <div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="大于1.0代表加速百分比，小于减速" role="tooltip" >
+                            <label for="speed-input">语速:</label>
+                            <input type="number" id="speed-input" step="0.1" min="0.1" max="3" value="1.0">
+                        </div>
+
+                        <div role="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="若选中，则字幕间隔使用静音填充">
+                            <input type="checkbox" id="keep-spacing-checkbox">
+                            <label for="keep-spacing-checkbox">保留字幕间隔</label>
+                        </div>
+                        <div class="mx-2" role="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="若选中，则当配音时长大于对应字幕时长时，强制加快语速对齐字幕(最大加速3倍)">
+                            <input type="checkbox" id="auto_speed">
+                            <label for="auto_speed">自动加速</label>
+                        </div>
+
+                    </div>
+					<div class="my-2">
+						<textarea id="synthesis-text" placeholder="请粘贴或导入 SRT/TXT 格式文本"></textarea>
+					</div>
+                    <div class="d-flex align-items-center ">
+                        <input type="file" id="voice-import-srt-button" style="display:none;" accept=".srt,.txt">
+                        <button type="button" class="btn btn-sm text-primary clear-text-btn"
+                            id="voice-import-text-button">导入txt或srt</button>
+
+                        <button type="button" class="btn btn-lg btn-danger ms-2" id="start-synthesis-button">开始生成配音</button>
+                    </div>
+                    <div id="synthesis-audio-container" class="synthesis-audio"></div>
+                    <div id="signel-area"></div>
+                </div>
+                <footer class="mt-5 mb-2">
+                    <div class=" text-center  text-secondary    fs-12" >
+                        <a href="https://github.com/jianchang512/kokoro-uiapi" target="_blank">jianchang512/kokoro-uiapi</a>
+                    </div>
+                </footer>   
+        
+    </div>
+
+
+
+
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/bootstrap.bundle.min.js"></script>
+    <script src="/static/script.js?v=6"></script>
+</body>
+
+</html>
