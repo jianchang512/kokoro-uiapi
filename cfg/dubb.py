@@ -6,6 +6,7 @@ from pathlib import Path
 import concurrent.futures
 from kokoro import KPipeline
 import soundfile as sf
+from . import cn_tn,en_tn
 def merge_audio_segments(queue_tts,filename,keep_spacing=False,auto_speed=False):
     from pydub import AudioSegment
     merged_audio = AudioSegment.empty()
@@ -78,11 +79,17 @@ class TTS:
 
         self.keep_spacing=keep_spacing
         self.auto_speed=auto_speed
+        normalizer=None
+        if voice[0] == 'z':
+            normalizer = cn_tn.TextNorm(to_banjiao = True)
+        elif voice[0] in ['a','b']:
+            normalizer = en_tn.EnglishNormalizer()
+        
 
         # 如果不是srt字幕
         if isinstance(text,str):
             self.queue_tts=[{
-                "text":text.strip(),
+                "text":normalizer(text.strip()) if normalizer else text.strip(),
                 "voice":voice,
                 "speed":speed,
                 "filename":self.end_mp3name+".wav",
@@ -94,7 +101,7 @@ class TTS:
             for i,it in enumerate(text):
                 fname=cfg.TEMP_FOLDER+'/'+cfg.get_md5(f'{it["text"]}-{voice}-{speed}')+'.wav' 
                 self.queue_tts.append({
-                    "text": it['text'],
+                    "text": normalizer(it['text']) if normalizer else  it['text'],
                     "voice": voice,
                     "start_time": it['start_time'],
                     "end_time": it['end_time'],
